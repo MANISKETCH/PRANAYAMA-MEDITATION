@@ -1,6 +1,28 @@
 workflows:
   android-workflow:
     name: Flutter Android Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      java: 17
+    # 👇 உங்கள் pubspec.yaml எந்த ஃபோல்டரில் இருக்கிறதோ அதை இங்கே குறிப்பிடவும்
+    working_directory: Pranayama-Meditation 
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+workflows:
+  android-workflow:
+    name: Flutter Android Build
     working_directory: PRANAYAMA-MEDITATION  # 👈 உங்கள் ஃபோல்டர் பெயர்
     scripts:
       - name: Get Flutter packages

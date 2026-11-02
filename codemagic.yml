@@ -6,6 +6,8 @@ workflows:
     environment:
       flutter: stable
       java: 17
+    # 👇 உங்கள் pubspec.yaml எந்த ஃபோல்டரில் இருக்கிறதோ அதை இங்கே குறிப்பிடவும்
+    working_directory: PRANAYAMA-MEDITATION 
     cache:
       cache_paths:
         - $HOME/.pub-cache

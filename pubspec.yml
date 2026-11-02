@@ -1,20 +1,29 @@
-workflows:
-  android-workflow:
-    name: Flutter Android Build
-    max_build_duration: 60
-    instance_type: mac_mini_m2
-    environment:
-      flutter: stable
-      java: 17
-    cache:
-      cache_paths:
-        - $HOME/.pub-cache
-    scripts:
-      - name: Get Flutter packages
-        script: |
-          flutter pub get
-      - name: Build APK
-        script: |
-          flutter build apk --release
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+name: yoga_app
+description: A new Flutter project for Yoga and Meditation.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^5.2.1
+  shared_preferences: ^2.2.2
+  wakelock_plus: ^1.1.4
+  intl: ^0.19.0
+  image_picker: ^1.0.4
+  google_mlkit_text_recognition: ^0.11.0
+  receive_sharing_intent: ^1.6.0
+  fl_chart: ^0.65.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/tick.mp3
